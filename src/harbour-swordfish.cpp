@@ -45,10 +45,10 @@
 int main(int argc, char *argv[]) {
     QScopedPointer<QGuiApplication> app(SailfishApp::application(argc, argv));
     app->setApplicationVersion(QString(APP_VERSION));
-    Settings *settings = new Settings();
+    Settings *settings = new Settings("harbour-swordfish", "net.tanghus.swordfish.sailfish");
 
     QQuickView* view = SailfishApp::createView();
-    qDebug() << "Import path" << SailfishApp::pathTo("lib/").toLocalFile();
+    qDebug() << "Import path" << SailfishApp::pathTo("qml/components/").toLocalFile();
     view->engine()->addImportPath(SailfishApp::pathTo("lib/").toLocalFile());
     view->engine()->addImportPath(SailfishApp::pathTo("qml/components/").toLocalFile());
     view->engine()->addImportPath(SailfishApp::pathTo("qml/pages/").toLocalFile());

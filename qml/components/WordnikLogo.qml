@@ -30,49 +30,23 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
-
-Page {
-    id: definitionsPage;
-
-    Connections {
-        target: FrontPage.wordnik;
-        onMessage: {
-             definitions.model = messageObject;
-        }
+BackgroundItem {
+    property url url: "https://wordnik.com";
+    property string path: "/";
+    width: parent.width;
+    height: logo.height + Theme.paddingMedium;
+    anchors.bottom: parent.bottom;
+    onClicked: {
+        console.log("Opening:", url + path);
+        Qt.openUrlExternally(url + path);
     }
-
-    SilicaListView {
-        id: definitions;
+    Rectangle{
+        color: "#bbbbbb";
         anchors.fill: parent;
-        quickScroll: true;
-
-        PageHeader {
-            title: qsTr("Definitions");
-        }
-
-        delegate: ListItem {
-            width: ListView.view.width;
-
-            Label {
-                anchors.centerIn: parent;
-                width: parent.width;
-                wrapMode: Text.WrapAtWordBoundaryOrAnywhere;
-                horizontalAlignment: Text.AlignHCenter;
-                textFormat: Text.RichText;
-                text: index + ". " + model.partOfSpeech + " " + model.text;
-                onLinkActivated: {
-                    Qt.openUrlExternally(link);
-                }
-            }
-            Label {
-                anchors.centerIn: parent;
-                width: parent.width;
-                wrapMode: Text.WrapAtWordBoundaryOrAnywhere;
-                horizontalAlignment: Text.AlignHCenter;
-                font.pixelSize: Theme.fontSizeExtraSmall;
-                color: Theme.secondaryColor;
-                text: model.attributionText;
-            }
+        Image {
+            id: logo;
+            anchors.centerIn: parent;
+            source: "../../images/wordnik.png";
         }
     }
 }

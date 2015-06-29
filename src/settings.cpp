@@ -30,9 +30,8 @@
 //#include <QDebug>
 #include "settings.h"
 
-Settings::Settings(QObject *parent) :
-    QObject(parent) {
-    _settings = new QSettings("harbour-kitchentimer", "net.tanghus.kitchentimer.sailfish");
+Settings::Settings(QString appname, QString appDomain) {
+    _settings = new QSettings(appname, appDomain);
 }
 
 QVariant Settings::value(const QString &key, const QVariant & defaultValue) {

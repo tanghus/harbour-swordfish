@@ -27,25 +27,29 @@
   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#ifndef QMLSETTINGS_H
-#define QMLSETTINGS_H
+import QtQuick 2.0
+import Sailfish.Silica 1.0
 
-#include <QObject>
-#include <QSettings>
-
-class Settings : public QObject {
-    Q_OBJECT
-public:
-    explicit Settings(const QString appname, const QString appDomain);
-
-signals:
-
-public slots:
-    QVariant value(const QString &key, const QVariant & defaultValue = QVariant());
-    void setValue(const QString &key, const QVariant &value);
-
-private:
-    QSettings *_settings;
-};
-
-#endif // QMLSETTINGS_H
+PullDownMenu {
+    Component.onCompleted: {
+        console.log("Menu.onCompleted. word/type", word, type);
+    }
+    MenuItem {
+        visible: type != "definitions";
+        text: qsTr("Definitions");
+        onClicked: switchType("definitions");
+    }
+    MenuItem {
+        visible: type != "related";
+        text: qsTr("Related");
+        onClicked: switchType("related");
+    }
+    MenuItem {
+        visible: type != "examples";
+        text: qsTr("Examples");
+        onClicked: switchType("examples");
+    }
+    MenuLabel {
+        text: qsTr("See more");
+    }
+}

@@ -32,21 +32,79 @@ import Sailfish.Silica 1.0
 import "pages"
 
 ApplicationWindow {
-    initialPage: Component { FrontPage { } }
+    id: app;
+
+    allowedOrientations: Orientation.Portrait | Orientation.Landscape;
+
+    property alias wordnikData: frontPage.wordnikData;
+    property string type: "definitions";
+    property alias word: frontPage.word;
+    property bool isBusy: false;
+    property bool canonical: true;
+    property int limit;
+    property Item wordnik;
+
+    initialPage: FrontPage {
+        id: frontPage;
+    }
     cover: Qt.resolvedUrl("cover/CoverPage.qml");
 
+    Component.onCompleted: {
+        loadSettings();
+    }
+
+    BusyIndicator {
+        id: busyIndicator;
+        anchors.centerIn: parent;
+        size: BusyIndicatorSize.Large;
+        running: true;
+    }
+
     WorkerScript {
-        id: wordnik;
-        source: Qt.resolvedUrl('js/provider.js');
+        id: wordnikScript;
+        source: Qt.resolvedUrl("../js/wordnikapi.js");
 
         onMessage: {
-            if(messageObject.quote) {
-                result = Number(messageObject.quote * multiplier).toFixed(numDecimals);
+            console.log("Message from WorkerScript:", messageObject.type, messageObject.wordnikData);
+            if(messageObject.wordnikData !== "") {
+                console.log("Setting wordnikData");
+                wordnikData = messageObject.wordnikData;
             } else {
                 console.log(messageObject.error);
             }
             setBusy(false);
         }
+    }
+
+    function loadSettings() {
+        setBusy(true);
+
+        canonical = settings.value("canonical", true);
+        limit = settings.value("limit", 5);
+
+        setBusy(false);
+    }
+
+    function getPayload(word, type) {
+        if(isBusy) {
+            return;
+        }
+
+        type = type;
+        word = word;
+
+        setBusy(true);
+
+        wordnikScript.sendMessage({"word": word, "type": type});
+
+    }
+
+    function setBusy(state) {
+        isBusy = state;
+        busyIndicator.running = state;
+    }
+    function capitalize(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
     }
 }
 

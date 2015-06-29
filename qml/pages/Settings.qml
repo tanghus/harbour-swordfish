@@ -1,5 +1,5 @@
 /*
-  Copyright (C) 2015 Thomas Tanghus <thomas@tanghus.net>
+  Copyright (C) 2013 Thomas Tanghus
   All rights reserved.
 
   You may use this file under the terms of BSD license as follows:
@@ -30,19 +30,50 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
-BackgroundItem {
-    property url url: "https://wordnik.com/"
-    width: parent.width - (2*Theme.paddingLarge);
-    height: 2*logo.height;
-    anchors.bottom: parent.bottom;
-    onClicked: {
-        console.log("Opening:", url)
-        Qt.openUrlExternally(url);
+Dialog {
+    id: settingsDialog;
+
+    allowedOrientations: Orientation.Portrait | Orientation.Landscape;
+
+    property bool tmpCanonical: canonical;
+
+    DialogHeader {
+        id: header;
+        dialog: settingsDialog;
+        title: qsTr('Settings');
     }
 
-    Image {
-        id: logo;
-        anchors.centerIn: parent;
-        source: "../../images/wordnik.png";
+    TextSwitch {
+        id: canonicalSwitch;
+        anchors.top: header.bottom;
+        leftMargin: Theme.paddingLarge; rightMargin: Theme.paddingLarge;
+        text: qsTr('Canonical');
+        description: qsTr("Try to return the correct word root ('cats' -> 'cat').");
+        checked: canonical;
+        onCheckedChanged: {
+            canonical = checked;
+        }
+    }
+
+    Slider {
+        id: limitValue;
+        anchors.top: canonicalSwitch.bottom;
+        width: parent.width - (2*Theme.paddingLarge);
+        leftMargin: Theme.paddingLarge; rightMargin: Theme.paddingLarge;
+        minimumValue: 1;
+        maximumValue: 20;
+        stepSize: 1;
+        value: limit;
+        valueText: value;
+        label: qsTr("Number of results to fetch");
+    }
+
+    onDone: {
+        if(result === DialogResult.Accepted) {
+            canonical = tmpCanonical;
+            limit = limitValue.sliderValue;
+            settings.setValue("canonical", canonical);
+            settings.setValue("limit", limit);
+        }
     }
 }

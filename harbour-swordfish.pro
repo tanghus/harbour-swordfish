@@ -24,15 +24,20 @@ SOURCES += src/harbour-swordfish.cpp \
 
 OTHER_FILES += qml/harbour-swordfish.qml \
     qml/pages/FrontPage.qml \
-    qml/pages/Definitions.qml \
     qml/cover/CoverPage.qml \
+    qml/components/WordnikLogo.qml \
+    qml/components/Attribution.qml \
+    qml/pages/Settings.qml \
+    qml/pages/About.qml \
+    qml/components/WordnikMenu.qml \
+    js/wordnikapi.js \
     rpm/harbour-swordfish.changes.in \
     rpm/harbour-swordfish.spec \
     rpm/harbour-swordfish.yaml \
     translations/*.ts \
     harbour-swordfish.desktop \
     images/wordnik.png \
-    qml/Components/WordnikLogo.qml
+    qml/pages/Results.qml
 
 # to disable building translations every time, comment out the
 # following CONFIG line
@@ -50,5 +55,8 @@ HEADERS += \
 images.files = images
 images.path = $${DEPLOYMENT_PATH}
 
+js.files = js
+js.path = $${DEPLOYMENT_PATH}
 
-INSTALLS += images
+
+INSTALLS += images js

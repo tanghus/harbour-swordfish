@@ -29,28 +29,27 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import "../Components"
+import "../components"
 
 
 Page {
-    id: frontPage
+    id: frontPage;
+    property Item resultsPage;
+    property var wordnikData;
+    property string word;
 
-    Timer {
-        id: inputTimer;
-        interval: 300;
-        running: false;
-        repeat: false;
-        onTriggered: {
-            multiplier = parseInt(amountText.text);
-            getQuote();
-        }
+    allowedOrientations: Orientation.Portrait | Orientation.Landscape;
+
+    Component.onCompleted: {
+        console.log("frontPage.onCompleted:", word);
     }
 
-    Connections {
-        target: wordInput;
-        onTextChanged: {
-            // Try not to refresh on every change.
-            inputTimer.restart();
+    onWordnikDataChanged: {
+        console.log("FrontPage. wordnikData changed");
+        if(wordnikData) {
+            resultsPage.wordnikData = wordnikData;
+            // need to reset it to be sure to trigger the signal.
+            wordnikData = null;
         }
     }
 
@@ -61,8 +60,12 @@ Page {
         // PullDownMenu and PushUpMenu must be declared in SilicaFlickable, SilicaListView or SilicaGridView
         PullDownMenu {
             MenuItem {
-                text: qsTr("Show Page 2")
-                onClicked: pageStack.push(Qt.resolvedUrl("SecondPage.qml"))
+                text: qsTr("About")
+                onClicked: pageStack.push(Qt.resolvedUrl("About.qml"))
+            }
+            MenuItem {
+                text: qsTr("Settings")
+                onClicked: pageStack.push(Qt.resolvedUrl("Settings.qml"))
             }
         }
 
@@ -81,11 +84,16 @@ Page {
                 id: header;
                 title: qsTr("Swordfish");
             }
-            TextField {
+            SearchField {
                 id: wordInput;
                 inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText;
-                placeholderText: qsTr("Lookup any name or phrase...");
+                placeholderText: qsTr("Word or phrase");
                 width: parent.width - (2*Theme.paddingLarge);
+                EnterKey.onClicked: {
+                    if(wordInput.text !== "") {
+                        search(wordInput.text);
+                    }
+                }
             }
             Item {
                 anchors.top: wordInput.bottom;
@@ -94,15 +102,21 @@ Page {
                 Button {
                     anchors.centerIn: parent;
                     text: qsTr("Search");
-                    enabled: wordInput.text !== "";
+                    enabled: wordInput.text !== "" && !isBusy;
                     onClicked: {
-                        pageStack.push(Qt.resolvedUrl("Definitions.qml"), {word: wordInput.text});
+                        search(wordInput.text);
                     }
                 }
             }
         }
     }
     WordnikLogo {}
+
+    function search(newWord) {
+        word = newWord;
+        console.log("Looking up:", word);
+        resultsPage = pageStack.push(Qt.resolvedUrl("Results.qml"), {word: word, type: type});
+    }
 }
 
 

@@ -31,12 +31,29 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 
 CoverBackground {
-    Label {
-        id: label
-        anchors.centerIn: parent
-        text: qsTr("My Cover")
+    Column {
+        anchors.fill: parent;
+        anchors.leftMargin: Theme.paddingLarge;
+        anchors.rightMargin: Theme.paddingLarge;
+        Label {
+            text: "Swordfish";
+            truncationMode: TruncationMode.Fade;
+            horizontalAlignment: Text.AlignHCenter;
+            width: parent.width;
+            font.pixelSize: Theme.fontSizeLarge;
+        }
+        Label {
+            text: word;
+            wrapMode: Text.WrapAtWordBoundaryOrAnywhere;
+            horizontalAlignment: Text.AlignHCenter;
+            verticalAlignment: Text.AlignBottom;
+            width: parent.width;
+            font.pixelSize: Theme.fontSizeLarge;
+        }
     }
 
+
+    /*
     CoverActionList {
         id: coverAction
 
@@ -48,6 +65,7 @@ CoverBackground {
             iconSource: "image://theme/icon-cover-pause"
         }
     }
+    */
 }
 
 
