@@ -1,4 +1,4 @@
-# Swordfish
+# ![icon](https://raw.githubusercontent.com/tanghus/harbour-swordfish/master/harbour-swordfish.png) Swordfish
 ## English dictionary for Sailfish OS
 
 Lookup definitions, examples and related words.
