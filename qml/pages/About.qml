@@ -11,9 +11,6 @@
     * Redistributions in binary form must reproduce the above copyright
       notice, this list of conditions and the following disclaimer in the
       documentation and/or other materials provided with the distribution.
-    * Neither the name of the Jolla Ltd nor the
-      names of its contributors may be used to endorse or promote products
-      derived from this software without specific prior written permission.
 
   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
   ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
@@ -46,10 +43,20 @@ Page {
             title: "Swordfish v." + Qt.application.version;
         }
 
+        Image {
+            id: image
+            y: Theme.paddingLarge
+            anchors.top: header.bottom;
+            anchors.horizontalCenter: parent.horizontalCenter
+            //opacity: 0.4
+            source: "image://theme/harbour-swordfish"
+        }
+
         Label {
             id: about;
-            anchors.top: header.bottom;
+            anchors.top: image.bottom;
             width: parent.width;
+            y: Theme.paddingLarge
             //anchors.fill: parent;
             anchors.leftMargin: Theme.paddingLarge;
             anchors.rightMargin: Theme.paddingLarge;
@@ -70,8 +77,8 @@ Page {
                         .arg(qsTr('issue tracker', 'Link text')) + '<br/><br/>' +
                   //: %1: Author nick, %2:Link to Web IRC
                   qsTr('Ask "%1" at the %2 channel on Freenode IRC for support', 'Link with text').arg('tanghus')
-                        .arg('<a href="http://webchat.freenode.net/?channels=sailfishos">#sailfishos</a>') + '<br/><br/>' +
-                  qsTr('The awesome icon is made by %1').arg('Alain M') + ' <a href="https://twitter.com/capricotwi04">@capricotwi04</a> <a href="mailto:alain_m@gmx.ch">alain_m@gmx.ch</a>';
+                        .arg('<a href="http://webchat.freenode.net/?channels=sailfishos">#sailfishos</a>') + '<br/><br/>'; /* +
+                  qsTr('The awesome icon is made by %1').arg('Alain M') + ' <a href="https://twitter.com/capricotwi04">@capricotwi04</a> <a href="mailto:alain_m@gmx.ch">alain_m@gmx.ch</a>';*/
 
             onLinkActivated: {
                 Qt.openUrlExternally(link)

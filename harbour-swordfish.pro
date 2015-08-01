@@ -12,23 +12,35 @@
 # The name of your application
 TARGET = harbour-swordfish
 
+QT += network
+
 DEPLOYMENT_PATH = /usr/share/$${TARGET}
 
 # App version
 DEFINES += APP_VERSION=\"\\\"$${VERSION}\\\"\"
 
+# Wordnik API key
+include(apikey.pro)
+
 CONFIG += sailfishapp
 
 SOURCES += src/harbour-swordfish.cpp \
-    src/settings.cpp
+    src/settings.cpp \
+    src/filedownloader.cpp
+
+HEADERS += \
+    src/settings.h \
+    src/filedownloader.h
 
 OTHER_FILES += qml/harbour-swordfish.qml \
     qml/pages/FrontPage.qml \
     qml/cover/CoverPage.qml \
     qml/components/WordnikLogo.qml \
     qml/components/Attribution.qml \
+    qml/components/Notification.qml \
     qml/pages/Settings.qml \
     qml/pages/About.qml \
+    qml/pages/Results.qml \
     qml/components/WordnikMenu.qml \
     js/wordnikapi.js \
     rpm/harbour-swordfish.changes.in \
@@ -37,7 +49,8 @@ OTHER_FILES += qml/harbour-swordfish.qml \
     translations/*.ts \
     harbour-swordfish.desktop \
     images/wordnik.png \
-    qml/pages/Results.qml
+    apikey.pro \
+    README.md
 
 # to disable building translations every time, comment out the
 # following CONFIG line
@@ -47,10 +60,10 @@ CONFIG += sailfishapp_i18n
 # planning to localize your app, remember to comment out the
 # following TRANSLATIONS line. And also do not forget to
 # modify the localized app name in the the .desktop file.
-TRANSLATIONS += translations/harbour-swordfish-de.ts
-
-HEADERS += \
-    src/settings.h
+TRANSLATIONS += translations/da_DK.ts \
+        translations/de_DE.ts \
+        translations/fr_FR.ts \
+        translations/nl.ts
 
 images.files = images
 images.path = $${DEPLOYMENT_PATH}
@@ -60,3 +73,4 @@ js.path = $${DEPLOYMENT_PATH}
 
 
 INSTALLS += images js
+

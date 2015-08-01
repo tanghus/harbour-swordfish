@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1">
+<TS version="2.1" language="de_DE">
 <context>
     <name>About</name>
     <message>
@@ -137,8 +137,8 @@
 <context>
     <name>WordnikMenu</name>
     <message>
-        <location filename="../qml/components/WordnikMenu.qml" line="51"/>
-        <source>Definitions</source>
+        <location filename="../qml/components/WordnikMenu.qml" line="36"/>
+        <source>Pronunciations</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -152,8 +152,8 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/WordnikMenu.qml" line="36"/>
-        <source>Pronunciations</source>
+        <location filename="../qml/components/WordnikMenu.qml" line="51"/>
+        <source>Definitions</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

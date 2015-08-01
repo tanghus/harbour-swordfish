@@ -11,9 +11,6 @@
     * Redistributions in binary form must reproduce the above copyright
       notice, this list of conditions and the following disclaimer in the
       documentation and/or other materials provided with the distribution.
-    * Neither the name of the Jolla Ltd nor the
-      names of its contributors may be used to endorse or promote products
-      derived from this software without specific prior written permission.
 
   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
   ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
@@ -35,19 +32,24 @@ PullDownMenu {
         console.log("Menu.onCompleted. word/type", word, type);
     }
     MenuItem {
-        visible: type != "definitions";
-        text: qsTr("Definitions");
-        onClicked: switchType("definitions");
+        visible: type != "pronunciations";
+        text: qsTr("Pronunciations");
+        onClicked: switchType("pronunciations");
     }
     MenuItem {
-        visible: type != "related";
-        text: qsTr("Related");
-        onClicked: switchType("related");
+        visible: type != "relatedWords";
+        text: qsTr("Related words");
+        onClicked: switchType("relatedWords");
     }
     MenuItem {
         visible: type != "examples";
         text: qsTr("Examples");
         onClicked: switchType("examples");
+    }
+    MenuItem {
+        visible: type != "definitions";
+        text: qsTr("Definitions");
+        onClicked: switchType("definitions");
     }
     MenuLabel {
         text: qsTr("See more");

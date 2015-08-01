@@ -11,9 +11,6 @@
     * Redistributions in binary form must reproduce the above copyright
       notice, this list of conditions and the following disclaimer in the
       documentation and/or other materials provided with the distribution.
-    * Neither the name of the Jolla Ltd nor the
-      names of its contributors may be used to endorse or promote products
-      derived from this software without specific prior written permission.
 
   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
   ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
@@ -36,7 +33,7 @@ Page {
     id: frontPage;
     property Item resultsPage;
     property var wordnikData;
-    property string word;
+    property string coverDefinition;
 
     allowedOrientations: Orientation.Portrait | Orientation.Landscape;
 
@@ -46,6 +43,10 @@ Page {
 
     onWordnikDataChanged: {
         console.log("FrontPage. wordnikData changed");
+        if(!resultsPage) {
+            resultsPage = pageStack.push(Qt.resolvedUrl("Results.qml"), {word: word, type: type});
+            resultsPage.definition.connect(setCoverDefinition);
+        }
         if(wordnikData) {
             resultsPage.wordnikData = wordnikData;
             // need to reset it to be sure to trigger the signal.
@@ -69,43 +70,38 @@ Page {
             }
         }
 
-        // Tell SilicaFlickable the height of its content.
-        //contentHeight: column.height
-
-        // Place our content in a Column.  The PageHeader is always placed at the top
-        // of the page, followed by our content.
-        Column {
-            id: column
-
-            width: parent.width;
-            height: parent.height;
-            spacing: Theme.paddingLarge;
-            PageHeader {
-                id: header;
-                title: qsTr("Swordfish");
-            }
-            SearchField {
-                id: wordInput;
-                inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText;
-                placeholderText: qsTr("Word or phrase");
-                width: parent.width - (2*Theme.paddingLarge);
-                EnterKey.onClicked: {
-                    if(wordInput.text !== "") {
-                        search(wordInput.text);
-                    }
+        PageHeader {
+            id: header;
+            title: "Swordfish";
+        }
+        SearchField {
+            id: wordInput;
+            anchors.top: header.bottom;
+            //anchors.leftMargin: Theme.paddingLarge;
+            inputMethodHints: wordPrediction
+                              ? Qt.ImhNoAutoUppercase
+                              : (Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText);
+            placeholderText: qsTr("Enter word or phrase");
+            width: parent.width; // - (2*Theme.paddingLarge);
+            EnterKey.onClicked: {
+                if(wordInput.text !== "") {
+                    search(wordInput.text);
                 }
             }
-            Item {
-                anchors.top: wordInput.bottom;
+        }
+        Item {
+            id: searchButton;
+            anchors.top: wordInput.bottom;
+            anchors.topMargin: Theme.paddingLarge;
+            anchors.leftMargin: Theme.paddingLarge;
+            width: parent.width - (2*Theme.paddingLarge);
+            Button {
                 anchors.topMargin: Theme.paddingLarge;
-                width: parent.width - (2*Theme.paddingLarge);
-                Button {
-                    anchors.centerIn: parent;
-                    text: qsTr("Search");
-                    enabled: wordInput.text !== "" && !isBusy;
-                    onClicked: {
-                        search(wordInput.text);
-                    }
+                anchors.centerIn: parent;
+                text: qsTr("Search");
+                enabled: wordInput.text !== "" && !isBusy;
+                onClicked: {
+                    search(wordInput.text);
                 }
             }
         }
@@ -113,9 +109,14 @@ Page {
     WordnikLogo {}
 
     function search(newWord) {
-        word = newWord;
+        word = newWord.trim();
         console.log("Looking up:", word);
-        resultsPage = pageStack.push(Qt.resolvedUrl("Results.qml"), {word: word, type: type});
+        getPayload(word, type);
+    }
+
+    function setCoverDefinition(def) {
+        console.log("setCoverDefinition", def);
+        coverDefinition = def;
     }
 }
 

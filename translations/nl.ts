@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1">
+<TS version="2.1" language="nl">
 <context>
     <name>About</name>
     <message>
@@ -41,53 +41,41 @@
         <extracomment>%1: Author nick, %2:Link to Web IRC</extracomment>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>The awesome icon is made by %1</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>CoverPage</name>
     <message>
         <source>My Cover</source>
-        <translation type="vanished">Mein Cover</translation>
+        <translation type="vanished">Mijn omslag</translation>
     </message>
 </context>
 <context>
-    <name>FirstPage</name>
+    <name>Definitions</name>
     <message>
-        <source>Show Page 2</source>
-        <translation type="vanished">Zur Seite 2</translation>
-    </message>
-    <message>
-        <source>UI Template</source>
-        <translation type="vanished">UI-Vorlage</translation>
-    </message>
-    <message>
-        <source>Hello Sailors</source>
-        <translation type="vanished">Hallo Matrosen</translation>
+        <source>Definitions</source>
+        <translation type="vanished">Definities</translation>
     </message>
 </context>
 <context>
     <name>FrontPage</name>
     <message>
         <source>Show Page 2</source>
-        <translation type="obsolete">Zur Seite 2</translation>
+        <translation type="vanished">Pagina 2 weergeven</translation>
     </message>
     <message>
         <source>Swordfish</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Hello Sailors</source>
-        <translation type="obsolete">Hallo Matrosen</translation>
+        <translation type="vanished">Zwaardvis</translation>
     </message>
     <message>
         <source>Search</source>
-        <translation type="unfinished"></translation>
+        <translation>Zoeken</translation>
     </message>
     <message>
         <source>Word or phrase</source>
+        <translation type="vanished">Woord of zin</translation>
+    </message>
+    <message>
+        <source>About</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -95,71 +83,99 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>About</source>
+        <source>Enter word or phrase</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>Results</name>
     <message>
-        <source>Definitions</source>
+        <source>%1 not found</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Showing results for %1 instead</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Definitions</source>
+        <translation type="unfinished">Definities</translation>
     </message>
     <message>
         <source>Examples</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Related</source>
+        <source>Related words</source>
         <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>SecondPage</name>
-    <message>
-        <source>Nested Page</source>
-        <translation type="vanished">Unterseite</translation>
-    </message>
-    <message>
-        <source>Item</source>
-        <translation type="vanished">Element</translation>
     </message>
 </context>
 <context>
     <name>Settings</name>
     <message>
+        <source>Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Canonical</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Try to return the correct word root (&apos;cats&apos; -&gt; &apos;cat&apos;), or to correct a misspelled word (&apos;flort&apos; -&gt; &apos;flirt&apos;).</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use word prediction</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>This only makes sense if your keyboard is set to English.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Number of results to fetch</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Try to return the correct word root (&apos;cats&apos; -&gt; &apos;cat&apos;).</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>WordnikMenu</name>
     <message>
-        <source>See more</source>
+        <source>Pronunciations</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Definitions</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Related</source>
+        <source>Related words</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Examples</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Definitions</source>
+        <translation type="unfinished">Definities</translation>
+    </message>
+    <message>
+        <source>See more</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>harbour-swordfish</name>
+    <message>
+        <source>Backend error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No pronunciations found for %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No results found</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Audio provided by:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

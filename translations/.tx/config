@@ -1,0 +1,10 @@
+[main]
+host = https://www.transifex.com
+lang_map = el: el_GR, de: de_DE, en: en_GB, da: da_DK, sv: sv_SE, ru: ru_RU, ca: ca_ES
+
+[harbour-swordfish.harbour-swordfishts]
+file_filter = <lang>.ts
+source_file = harbour-swordfish.ts
+source_lang = en_GB
+type = QT
+

@@ -11,9 +11,6 @@
     * Redistributions in binary form must reproduce the above copyright
       notice, this list of conditions and the following disclaimer in the
       documentation and/or other materials provided with the distribution.
-    * Neither the name of the Jolla Ltd nor the
-      names of its contributors may be used to endorse or promote products
-      derived from this software without specific prior written permission.
 
   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
   ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
@@ -40,18 +37,26 @@
 #include <QLocale>
 #include <QTranslator>
 #include <QDebug>
+#include <QStandardPaths>
 #include "settings.h"
+#include "filedownloader.h"
 
 int main(int argc, char *argv[]) {
     QScopedPointer<QGuiApplication> app(SailfishApp::application(argc, argv));
     app->setApplicationVersion(QString(APP_VERSION));
     Settings *settings = new Settings("harbour-swordfish", "net.tanghus.swordfish.sailfish");
+    FileDownloader *downloader = new FileDownloader();
 
     QQuickView* view = SailfishApp::createView();
     qDebug() << "Import path" << SailfishApp::pathTo("qml/components/").toLocalFile();
     view->engine()->addImportPath(SailfishApp::pathTo("lib/").toLocalFile());
     view->engine()->addImportPath(SailfishApp::pathTo("qml/components/").toLocalFile());
     view->engine()->addImportPath(SailfishApp::pathTo("qml/pages/").toLocalFile());
+
+    QString cacheDir = QStandardPaths::writableLocation(QStandardPaths::CacheLocation);
+    qDebug() << "Cache dir:" << cacheDir;
+
+    QString apiKey = QString(API_KEY);
 
     QTranslator *translator = new QTranslator;
 
@@ -64,7 +69,9 @@ int main(int argc, char *argv[]) {
     }
     app->installTranslator(translator);
 
+    view->rootContext()->setContextProperty("downloader", downloader);
     view->rootContext()->setContextProperty("settings", settings);
+    view->rootContext()->setContextProperty("apiKey", apiKey);
     view->setSource(SailfishApp::pathTo("qml/harbour-swordfish.qml"));
     view->showFullScreen();
     return app->exec();

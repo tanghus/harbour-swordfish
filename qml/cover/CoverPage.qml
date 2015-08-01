@@ -11,9 +11,6 @@
     * Redistributions in binary form must reproduce the above copyright
       notice, this list of conditions and the following disclaimer in the
       documentation and/or other materials provided with the distribution.
-    * Neither the name of the Jolla Ltd nor the
-      names of its contributors may be used to endorse or promote products
-      derived from this software without specific prior written permission.
 
   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
   ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
@@ -31,41 +28,49 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 
 CoverBackground {
+    /*CoverPlaceholder {
+        text: qsTr("Look up word");
+        icon.source: "image://theme/harbour-swordfish";
+    }*/
+
     Column {
-        anchors.fill: parent;
-        anchors.leftMargin: Theme.paddingLarge;
-        anchors.rightMargin: Theme.paddingLarge;
+        anchors {
+            fill: parent;
+            leftMargin: Theme.paddingLarge;
+            rightMargin: Theme.paddingLarge;
+            topMargin: Theme.paddingLarge;
+        }
         Label {
             text: "Swordfish";
             truncationMode: TruncationMode.Fade;
             horizontalAlignment: Text.AlignHCenter;
             width: parent.width;
+            font.bold: true;
             font.pixelSize: Theme.fontSizeLarge;
         }
+        Image {
+            id: image;
+            visible: cword.text === "";
+            y: Theme.paddingLarge;
+            anchors.horizontalCenter: parent.horizontalCenter
+            source: "image://theme/harbour-swordfish"
+        }
         Label {
+            id: cword;
             text: word;
-            wrapMode: Text.WrapAtWordBoundaryOrAnywhere;
-            horizontalAlignment: Text.AlignHCenter;
+            truncationMode: TruncationMode.Fade;
             verticalAlignment: Text.AlignBottom;
             width: parent.width;
             font.pixelSize: Theme.fontSizeLarge;
         }
-    }
-
-
-    /*
-    CoverActionList {
-        id: coverAction
-
-        CoverAction {
-            iconSource: "image://theme/icon-cover-next"
-        }
-
-        CoverAction {
-            iconSource: "image://theme/icon-cover-pause"
+        Label {
+            text: coverDefinition;
+            wrapMode: Text.WrapAtWordBoundaryOrAnywhere;
+            verticalAlignment: Text.AlignBottom;
+            width: parent.width;
+            font.pixelSize: Theme.fontSizeExtraSmall;
         }
     }
-    */
 }
 
 

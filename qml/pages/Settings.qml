@@ -11,9 +11,6 @@
     * Redistributions in binary form must reproduce the above copyright
       notice, this list of conditions and the following disclaimer in the
       documentation and/or other materials provided with the distribution.
-    * Neither the name of the Jolla Ltd nor the
-      names of its contributors may be used to endorse or promote products
-      derived from this software without specific prior written permission.
 
   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
   ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
@@ -36,43 +33,64 @@ Dialog {
     allowedOrientations: Orientation.Portrait | Orientation.Landscape;
 
     property bool tmpCanonical: canonical;
+    property bool tmpWordPrediction: wordPrediction;
 
-    DialogHeader {
-        id: header;
-        dialog: settingsDialog;
-        title: qsTr('Settings');
-    }
+    SilicaFlickable {
+        anchors.fill: parent;
+        contentHeight: column.height;
 
-    TextSwitch {
-        id: canonicalSwitch;
-        anchors.top: header.bottom;
-        leftMargin: Theme.paddingLarge; rightMargin: Theme.paddingLarge;
-        text: qsTr('Canonical');
-        description: qsTr("Try to return the correct word root ('cats' -> 'cat').");
-        checked: canonical;
-        onCheckedChanged: {
-            canonical = checked;
+        Column {
+            id: column;
+            width: parent.width;
+
+            DialogHeader {
+                id: header;
+                dialog: settingsDialog;
+                title: qsTr('Settings');
+            }
+
+            TextSwitch {
+                id: canonicalSwitch;
+                leftMargin: Theme.paddingLarge; rightMargin: Theme.paddingLarge;
+                text: qsTr('Canonical');
+                description: qsTr("Try to return the correct word root ('cats' -> 'cat'), or to correct a misspelled word ('flort' -> 'flirt').");
+                checked: canonical;
+                onCheckedChanged: {
+                    tmpCanonical = checked;
+                }
+            }
+
+            TextSwitch {
+                id: wordPredictionSwitch;
+                leftMargin: Theme.paddingLarge; rightMargin: Theme.paddingLarge;
+                text: qsTr('Use word prediction');
+                description: qsTr("This only makes sense if your keyboard is set to English.");
+                checked: wordPrediction;
+                onCheckedChanged: {
+                    tmpWordPrediction = checked;
+                }
+            }
+
+            Slider {
+                id: limitValue;
+                width: parent.width - (2*Theme.paddingLarge);
+                leftMargin: Theme.paddingLarge; rightMargin: Theme.paddingLarge;
+                minimumValue: 1;
+                maximumValue: 50;
+                stepSize: 1;
+                value: limit;
+                valueText: value;
+                label: qsTr("Number of results to fetch");
+            }
         }
     }
-
-    Slider {
-        id: limitValue;
-        anchors.top: canonicalSwitch.bottom;
-        width: parent.width - (2*Theme.paddingLarge);
-        leftMargin: Theme.paddingLarge; rightMargin: Theme.paddingLarge;
-        minimumValue: 1;
-        maximumValue: 20;
-        stepSize: 1;
-        value: limit;
-        valueText: value;
-        label: qsTr("Number of results to fetch");
-    }
-
     onDone: {
         if(result === DialogResult.Accepted) {
             canonical = tmpCanonical;
+            wordPrediction = tmpWordPrediction;
             limit = limitValue.sliderValue;
             settings.setValue("canonical", canonical);
+            settings.setValue("wordPrediction", wordPrediction);
             settings.setValue("limit", limit);
         }
     }
