@@ -77,7 +77,9 @@ Page {
                         .arg(qsTr('issue tracker', 'Link text')) + '<br/><br/>' +
                   //: %1: Author nick, %2:Link to Web IRC
                   qsTr('Ask "%1" at the %2 channel on Freenode IRC for support', 'Link with text').arg('tanghus')
-                        .arg('<a href="http://webchat.freenode.net/?channels=sailfishos">#sailfishos</a>') + '<br/><br/>'; /* +
+                        .arg('<a href="http://webchat.freenode.net/?channels=sailfishos">#sailfishos</a>') + '<br/><br/>' +
+                  qsTr('%1 uses the %2 API.').arg('Swordfish')
+                        .arg('<a href="http://developer.wordnik.com/">Wordnik</a>') + '<br/><br/>'; /* +
                   qsTr('The awesome icon is made by %1').arg('Alain M') + ' <a href="https://twitter.com/capricotwi04">@capricotwi04</a> <a href="mailto:alain_m@gmx.ch">alain_m@gmx.ch</a>';*/
 
             onLinkActivated: {
