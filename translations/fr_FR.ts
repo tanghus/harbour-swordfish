@@ -41,6 +41,10 @@
         <extracomment>%1: Author nick, %2:Link to Web IRC</extracomment>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>%1 uses the %2 API</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FrontPage</name>
