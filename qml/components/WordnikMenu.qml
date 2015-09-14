@@ -31,11 +31,12 @@ PullDownMenu {
     Component.onCompleted: {
         console.log("Menu.onCompleted. word/type", word, type);
     }
+    /*
     MenuItem {
         visible: type != "pronunciations";
         text: qsTr("Pronunciations");
         onClicked: switchType("pronunciations");
-    }
+    }*/
     MenuItem {
         visible: type != "relatedWords";
         text: qsTr("Related words");
