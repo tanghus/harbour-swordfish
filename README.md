@@ -3,6 +3,12 @@
 
 Lookup definitions, examples and related words.
 
+Results are taken from from several sources, so you when in doubt look at more than the first result.
+
+* Definitions are very informative.
+* Examples puts the words into context, and can some times be very funny.
+* Related words can be dangerous as you can keep looking words you didn't know were interesting.
+
 Swordfish uses the [Wordnik](https://wordnik.com) [API](http://developer.wordnik.com). If you want to
 support Wordnik, you can [adopt your favourite word](https://www.wordnik.com/adoptaword).
 
