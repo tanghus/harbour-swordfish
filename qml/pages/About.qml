@@ -80,7 +80,7 @@ Page {
                         .arg('<a href="http://webchat.freenode.net/?channels=sailfishos">#sailfishos</a>') + '<br/><br/>' +
                   qsTr('%1 uses the %2 API.').arg('Swordfish')
                         .arg('<a href="http://developer.wordnik.com/">Wordnik</a>') + '<br/><br/>'; /* +
-                  qsTr('The awesome icon is made by %1').arg('Alain M') + ' <a href="https://twitter.com/capricotwi04">@capricotwi04</a> <a href="mailto:alain_m@gmx.ch">alain_m@gmx.ch</a>';*/
+                  qsTr('The awesome icon is made by %1').arg('Alain M') + ' <a href="https://twitter.com/capricotwi">@capricotwi</a> <a href="mailto:alain_m@gmx.ch">alain_m@gmx.ch</a>';*/
 
             onLinkActivated: {
                 Qt.openUrlExternally(link)
