@@ -42,7 +42,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>%1 uses the %2 API</source>
+        <source>%1 uses the %2 API.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -117,10 +117,6 @@
 </context>
 <context>
     <name>WordnikMenu</name>
-    <message>
-        <source>Pronunciations</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>Related words</source>
         <translation type="unfinished"></translation>

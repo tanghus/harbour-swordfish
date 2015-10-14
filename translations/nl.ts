@@ -42,41 +42,15 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>%1 uses the %2 API</source>
+        <source>%1 uses the %2 API.</source>
         <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>CoverPage</name>
-    <message>
-        <source>My Cover</source>
-        <translation type="vanished">Mijn omslag</translation>
-    </message>
-</context>
-<context>
-    <name>Definitions</name>
-    <message>
-        <source>Definitions</source>
-        <translation type="vanished">Definities</translation>
     </message>
 </context>
 <context>
     <name>FrontPage</name>
     <message>
-        <source>Show Page 2</source>
-        <translation type="vanished">Pagina 2 weergeven</translation>
-    </message>
-    <message>
-        <source>Swordfish</source>
-        <translation type="vanished">Zwaardvis</translation>
-    </message>
-    <message>
         <source>Search</source>
         <translation>Zoeken</translation>
-    </message>
-    <message>
-        <source>Word or phrase</source>
-        <translation type="vanished">Woord of zin</translation>
     </message>
     <message>
         <source>About</source>
@@ -143,10 +117,6 @@
 </context>
 <context>
     <name>WordnikMenu</name>
-    <message>
-        <source>Pronunciations</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>Related words</source>
         <translation type="unfinished"></translation>

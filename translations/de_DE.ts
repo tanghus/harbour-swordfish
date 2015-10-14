@@ -50,7 +50,7 @@
     </message>
     <message>
         <location filename="../qml/pages/About.qml" line="81"/>
-        <source>%1 uses the %2 API</source>
+        <source>%1 uses the %2 API.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -142,27 +142,22 @@
 <context>
     <name>WordnikMenu</name>
     <message>
-        <location filename="../qml/components/WordnikMenu.qml" line="36"/>
-        <source>Pronunciations</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/components/WordnikMenu.qml" line="41"/>
+        <location filename="../qml/components/WordnikMenu.qml" line="42"/>
         <source>Related words</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/WordnikMenu.qml" line="46"/>
+        <location filename="../qml/components/WordnikMenu.qml" line="47"/>
         <source>Examples</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/WordnikMenu.qml" line="51"/>
+        <location filename="../qml/components/WordnikMenu.qml" line="52"/>
         <source>Definitions</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/WordnikMenu.qml" line="55"/>
+        <location filename="../qml/components/WordnikMenu.qml" line="56"/>
         <source>See more</source>
         <translation type="unfinished"></translation>
     </message>
