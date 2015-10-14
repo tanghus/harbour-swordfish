@@ -3,7 +3,7 @@
 
 Lookup definitions, examples and related words.
 
-Results are taken from from several sources, so you when in doubt look at more than the first result.
+Results are taken from from several sources, so when in doubt look at more than the first result.
 
 * Definitions are very informative.
 * Examples puts the words into context, and can some times be very funny.
