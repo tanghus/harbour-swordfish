@@ -1,6 +1,8 @@
 # ![icon](https://raw.githubusercontent.com/tanghus/harbour-swordfish/master/harbour-swordfish.png) Swordfish
 ## English dictionary for Sailfish OS
 
+[![Join the chat at https://gitter.im/tanghus/harbour-swordfish](https://badges.gitter.im/tanghus/harbour-swordfish.svg)](https://gitter.im/tanghus/harbour-swordfish?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Lookup definitions, examples and related words.
 
 Results are taken from from several sources, so when in doubt look at more than the first result.
